@@ -1,0 +1,27 @@
+service: sanity-create-studio
+# app and org for use with dashboard.serverless.com
+app: sanity-create-studio
+org: dorelljames
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: ap-southeast-1
+  environment:
+    APP_TOKEN: ${param:APP_TOKEN}
+    APP_TOKEN_LIVE: ${param:APP_TOKEN_LIVE}
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http: ANY /
+      - http: "ANY {proxy+}"
+  sanity:
+    handler: index.handler
+    events:
+      - http: "POST /create"
+
+plugins:
+  - serverless-offline
