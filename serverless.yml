@@ -8,6 +8,7 @@ provider:
   runtime: nodejs12.x
   stage: dev
   region: ap-southeast-1
+  memorySize: 128
   environment:
     APP_TOKEN: ${param:APP_TOKEN}
     APP_TOKEN_LIVE: ${param:APP_TOKEN_LIVE}
@@ -18,10 +19,6 @@ functions:
     events:
       - http: ANY /
       - http: "ANY {proxy+}"
-  sanity:
-    handler: index.handler
-    events:
-      - http: "POST /create"
 
 plugins:
   - serverless-offline

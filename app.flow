@@ -1,0 +1,39 @@
+# GitHub
+    - Clone repo from Sanity studio template
+    - update sanity.json at github with sanityProjectId
+    - Add deploy key to created repo
+
+# Netlify
+    - create deploy key and get deploy key id
+    - create new site based from repoOwner, repoName and deployKeyId created beforehand
+
+
+# Sanity
+    - create new project
+    - add dataset
+    - deploy graphql
+    - add cors url based from where studio is uploaded
+    - setup build hooks
+
+----------
+
+Steps:
+
+    1.
+        [Netlify] Create deploy key = deployKeyId, deployKey
+        [Sanity] Create new sanity project = sanityProjectId
+        [GitHub] Create new repo based from Sanity studio template = repoOwner, repoName
+
+    2.
+        [GitHub] Add deployKey to GitHub repo
+        [GitHub] Update sanity.json with created sanityProjectId
+        [Sanity] Create `production` dataset
+
+    3.
+        [Netlify] Create new site with created repoOwner, repoName and deployKeyId in previous steps = siteURL
+        [Sanity] Deploy GraphQL with projectId and production dataset
+
+    4.
+        [Sanity] Add Sanity CORS URL based from `siteURL` created in Step 3
+        [Sanity] Setup webhooks for Blog workflow
+
